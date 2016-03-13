@@ -13,6 +13,13 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
   #post 'users', to: 'users#create'
+  
+  # Have to manually create a route for login/logout since it is just a state and
+  # does not interact with the database
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
